@@ -59,13 +59,21 @@ body {
   left: 0;
 }
 
-.bio h1 {
-  width: 100%;
+.bio h2 {
+  width: 80%;
+  margin-left: 10%;
+}
+
+blockquote h3 {
+  width: 80%;
+  margin-left: 10%;
 }
 
 blockquote footer {
   width: 100%;
   text-align: center;
+  background-color: white;
+  color: grey;
 }
 
 .myContainer {
@@ -136,6 +144,11 @@ blockquote footer {
   padding: 10px;
   text-align: justify;
   border-top: 2px #F5F5F5 solid;
+}
+
+footer {
+  background-color: #181818;
+  color: white;
 }
 
 footer a {

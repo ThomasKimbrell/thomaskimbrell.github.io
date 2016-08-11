@@ -1,0 +1,133 @@
+body {
+  background-color: #E5E5E5;
+}
+
+.main {
+  margin-top: 90px;
+}
+
+
+.welcome {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.invisible {
+  height: 100vh;
+  z-index: -2;
+}
+
+.bio {
+  z-index: -1;
+  position: fixed;
+  top: 59px;
+  height: 100vh;
+}
+
+
+
+.myNav {
+  background-color: white;
+  border: none;
+}
+
+.tagLine {
+  text-align: center;
+  align-items: center;
+}
+
+.flexContainer {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flexItem {
+  width: 48%;
+  margin-bottom: 50px;
+  align-content: stretch;
+  background-color: white;
+  box-shadow: 1px 2px 2px #888888;
+}
+
+.exCard {
+  background-color: white;
+  width: 100%;
+  position: relative;
+}
+
+.exCardImg {
+  /*background-image: url('/bootstrap/img/cmpink.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;*/
+  width: 30%;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.exCardImg img {
+  height: 100%;
+}
+
+.exCardContent {
+  padding: 10px;
+  display: inline-block;
+  width: 65%;
+  position: absolute;
+}
+
+.exCardDescription {
+  padding: 10px;
+  text-align: justify;
+  border-top: 2px #F5F5F5 solid;
+  position: relative;
+  top: -5px;
+}
+
+.card {
+  background-color: white;
+  height: auto;
+  margin-bottom: 50px;
+  box-shadow: 1px 2px 2px #888888;
+}
+
+.cardImg {
+  overflow: hidden;
+  max-height: 50%;
+}
+
+.cardImg img {
+  width: 110%;
+  height: auto;
+  margin-left: -5%;
+}
+
+.cardContent {
+  padding: 10px;
+}
+
+.cardContent p {
+  color: grey;
+}
+
+.honors {
+  padding: 10px;
+}

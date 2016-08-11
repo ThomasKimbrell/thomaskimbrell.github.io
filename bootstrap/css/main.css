@@ -1,0 +1,197 @@
+body {
+  background-color: #E5E5E5;
+}
+
+.myNav {
+  background-color: white;
+  border: none;
+}
+
+.myNavButton {
+  border: none;
+  color: #555;
+}
+
+/*.myNavLink:active {
+  border-bottom: 2px #B378D3 solid;
+}*/
+
+.main {
+  min-height: 100vh;
+  margin-top: 100px;
+  /*background-image: url('http://www.tradesyn.com/img/3.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;*/
+}
+
+.tagline {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+  position: relative;
+  top: -50px;
+  left: 0;
+}
+
+.tagline h1 {
+  width: 100%;
+  text-align: center;
+}
+
+.invisible {
+  min-height: 100vh;
+  z-index: -1;
+}
+
+.bio {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  height: 90vh;
+  width: 100vw;
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.bio h1 {
+  width: 100%;
+}
+
+blockquote footer {
+  width: 100%;
+  text-align: center;
+}
+
+.myContainer {
+  margin-top: 70px;
+}
+
+.flexContainer {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flexItem {
+  width: 90%;
+  margin-bottom: 50px;
+  align-content: stretch;
+  background-color: white;
+  box-shadow: 1px 2px 2px #888888;
+}
+
+.exCard {
+  background-color: white;
+  width: 100%;
+  position: relative;
+}
+
+.exCardImg {
+  /*background-image: url('/bootstrap/img/cmpink.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;*/
+  display: none;
+}
+
+.edCardImg {
+  /*background-image: url('/bootstrap/img/cmpink.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;*/
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  text-align: center;
+}
+
+.exCardImg img {
+  border: none;
+}
+
+.edCardImg img {
+  border: none;
+}
+
+.exCardContent {
+  padding: 10px;
+  display: inline-block;
+  width: 100%;
+}
+
+.exCardDescription {
+  padding: 10px;
+  text-align: justify;
+  border-top: 2px #F5F5F5 solid;
+}
+
+footer a {
+  color: #E5E5E5;
+  height: auto;
+  padding: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .flexItem {
+    width: 48%;
+  }
+    .exCard {
+    background-color: white;
+    width: 100%;
+    position: relative;
+  }
+  
+  .exCardImg {
+    /*background-image: url('/bootstrap/img/cmpink.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;*/
+    width: 30%;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .edCardImg {
+    /*background-image: url('/bootstrap/img/cmpink.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;*/
+    width: 30%;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .exCardImg img {
+    height: 100%;
+  }
+  
+  .edCardImg img {
+    height: 100%;
+  }
+  
+  .exCardContent {
+    padding: 10px;
+    display: inline-block;
+    width: 65%;
+    position: absolute;
+  }
+  
+  .exCardDescription {
+    padding: 10px;
+    text-align: justify;
+    border-top: 2px #F5F5F5 solid;
+    position: relative;
+    top: -5px;
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+    
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='bootstrap/css/test.css' rel='stylesheet' type='text/css'>
+    
+    <script src='bootstrap/js/vendor/angular.min.js'></script>
+    <script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
+  </head>
+  <body ng-app='mySite'>
+    
+    <nav class="navbar navbar-default navbar-fixed-top myNav">
+      <div class="container-fluid">
+        <i class='material-icons' style='font-size: xx-large;'>account_circle</i>
+        <h1 style='display: inline-block; font-family:Roboto Thin; margin: 10px;'>Thomas Kimbrell</h1>
+        <ul class="nav navbar-nav pull-right">
+          <li class='active'><a href='#/'>About</a></li>
+          <li><a href='#/experience/'>Experience</a></li>
+          <li><a href='#/education/'>Education</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class='welcome'>
+      <div class='tagLine'>
+        <h1>Hello World!</h1>
+        <h3>Allow me to introduce myself. I'm the real Slimshady!</h3>
+      </div>
+    </div>
+    
+    <div class='invisible'></div>
+    
+    <div class='container-fluid'>
+      <div class='jumbotron bio'>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a maximus nunc. Vestibulum pulvinar id tortor et ultricies. Donec faucibus, arcu a ultricies porta, turpis lacus ultrices odio, id dictum magna turpis nec nisi. Quisque lorem nisi, suscipit id libero eget, aliquam sollicitudin libero. Nullam condimentum sed mauris at efficitur. Mauris congue lectus et enim posuere, ut feugiat massa fringilla. Proin tempus arcu ac ex iaculis eleifend. Donec vel tempus urna, at venenatis metus. Praesent egestas mi sed enim sodales interdum. Phasellus interdum velit quis libero varius, nec vehicula ante efficitur. Mauris aliquet neque at maximus dignissim. Nam quam nibh, placerat eu rutrum sit amet, efficitur id sem. Nunc semper elementum dolor a consectetur.</p>
+        
+        <p>Vivamus pellentesque ante tortor, a condimentum mauris efficitur vehicula. Integer fringilla mauris quis interdum faucibus. Nam suscipit scelerisque metus, nec congue orci. Nulla in tellus ligula. Fusce a ligula id orci auctor fringilla maximus sed enim. Donec congue nisi id blandit gravida. Proin tincidunt ligula sed nisl maximus, nec imperdiet mauris iaculis. Aliquam augue massa, imperdiet at lacinia id, lobortis et erat. Mauris nisl ipsum, tincidunt posuere lacinia ac, faucibus imperdiet lacus.</p>
+      </div>
+    </div>
+
+    
+    <!-- Modules  -->
+    <script type='text/javascript' src='bootstrap/js/app.js'></script>
+    
+<script type="text/ng-template" id="home.html">
+  <div class='container-fluid'>
+  <div class='about'>
+    <div class='jumbotron tagLine'>
+      <h3>Hello World!</h3>
+      <p>Allow me to introduce myself. I'm the real Slimshady!</p>
+    </div>
+    <div class='jumbotron bio'>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a maximus nunc. Vestibulum pulvinar id tortor et ultricies. Donec faucibus, arcu a ultricies porta, turpis lacus ultrices odio, id dictum magna turpis nec nisi. Quisque lorem nisi, suscipit id libero eget, aliquam sollicitudin libero. Nullam condimentum sed mauris at efficitur. Mauris congue lectus et enim posuere, ut feugiat massa fringilla. Proin tempus arcu ac ex iaculis eleifend. Donec vel tempus urna, at venenatis metus. Praesent egestas mi sed enim sodales interdum. Phasellus interdum velit quis libero varius, nec vehicula ante efficitur. Mauris aliquet neque at maximus dignissim. Nam quam nibh, placerat eu rutrum sit amet, efficitur id sem. Nunc semper elementum dolor a consectetur.</p>
+      
+      <p>Vivamus pellentesque ante tortor, a condimentum mauris efficitur vehicula. Integer fringilla mauris quis interdum faucibus. Nam suscipit scelerisque metus, nec congue orci. Nulla in tellus ligula. Fusce a ligula id orci auctor fringilla maximus sed enim. Donec congue nisi id blandit gravida. Proin tincidunt ligula sed nisl maximus, nec imperdiet mauris iaculis. Aliquam augue massa, imperdiet at lacinia id, lobortis et erat. Mauris nisl ipsum, tincidunt posuere lacinia ac, faucibus imperdiet lacus.</p>
+    </div>
+  </div>
+</div>
+</script>
+    <!-- Controllers  -->
+    <script type='text/javascript' src='bootstrap/js/controllers/HomeController.js'></script>
+    <script type='text/javascript' src='bootstrap/js/controllers/ExperienceController.js'></script>
+    <script type='text/javascript' src='bootstrap/js/controllers/EducationController.js'></script>
+    
+    <!-- Services  -->
+    <script type='text/javascript' src='bootstrap/js/services/ExperienceService.js'></script>
+    <script type='text/javascript' src='bootstrap/js/services/EducationService.js'></script>
+    
+  </body>
+
+</html>

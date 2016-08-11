@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Thomas Kimbrell</title>
+    
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='bootstrap/css/main.css' rel='stylesheet' type='text/css'>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src='bootstrap/js/bootstrap.min.js'></script>
+    <script src='bootstrap/js/vendor/angular.min.js'></script>
+    <script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
+    <script src="https://use.fontawesome.com/7eafcfa8e1.js"></script>
+  </head>
+  <body ng-app='mySite'>
+    
+    <nav class="navbar navbar-default navbar-fixed-top myNav">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed myNavButton" data-toggle="collapse" data-target="#topnav" aria-expanded="false">
+            <i class='material-icons'>menu</i>
+          </button>
+          <a class="navbar-brand" href="#/">Thomas Kimbrell</a>
+        </div> <!-- end navbar header -->
+        <div class="collapse navbar-collapse pull-right" id="topnav" style="z-index: 100;">
+          <ul class="nav navbar-nav myNavLinks">
+            <li class='myNavLink' id='about'><a href='#/'>About</a></li>
+            <li class='myNavLink' id='experience'><a href='#/experience/'>Experience</a></li>
+            <li class='myNavLink' id='education'><a href='#/education/'>Education</a></li>
+          </ul>
+        </div>
+      </div>
+      </nav>
+    
+    <div class='main'>
+      <div ng-view></div>
+    </div>
+    
+    <footer style='background-color: #181818; height: 60px; color: white'>
+      <div class='container-fluid' style="padding: 20px; text-align: center;">
+        <a href="tel:+1-678-936-0115"><i class='fa fa-mobile fa-2x'></i></a>
+        <a href='mailto:thms.kimbrell@gmail.com?Subject=Top%Secret' target='_blank'><i class='fa fa-envelope-o fa-2x'></i></a>
+        <a href='https://www.linkedin.com/in/thomas-kimbrell-77438358'><i class='fa fa-linkedin-square fa-2x'></i></a>
+      </div>
+    </footer>
+    
+    <!-- Modules  -->
+    <script type='text/javascript' src='bootstrap/js/app.js'></script>
+    
+    <!-- Controllers  -->
+    <script type='text/javascript' src='bootstrap/js/controllers/HomeController.js'></script>
+    <script type='text/javascript' src='bootstrap/js/controllers/ExperienceController.js'></script>
+    <script type='text/javascript' src='bootstrap/js/controllers/EducationController.js'></script>
+    
+    <!-- Services  -->
+    <script type='text/javascript' src='bootstrap/js/services/ExperienceService.js'></script>
+    <script type='text/javascript' src='bootstrap/js/services/EducationService.js'></script>
+    
+    <!-- my scripts -->
+    <script type='text/javascript' src='bootstrap/js/myfunctions.js'></script>
+    
+  </body>
+
+</html>

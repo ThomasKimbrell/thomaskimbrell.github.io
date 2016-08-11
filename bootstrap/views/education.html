@@ -1,0 +1,22 @@
+<div class='container-fluid myContainer'>
+  <h2> <i class='material-icons'>school</i> Education </h2>
+  <div class='flexContainer'>
+    <div class='flexItem' ng-repeat='school in schools'>
+      <div class='exCard'>
+        <div class='edCardImg'>
+          <img ng-src='{{ school.seal }}' class='img-thumbnail'>
+        </div>
+        <div class='exCardContent'>
+          <h3>{{ school.schoolName }}</h3>
+            <h4 class='company'>{{ school.degree }}</h4>
+          <p>{{ school.dateBegin }} - {{ school.dateEnd }}</p>
+        </div>
+        <div class='exCardDescription'>
+          <div ng-repeat='award in school.awards'>
+            <p><i class='material-icons' style='font-size:small; vertical-align: middle;'>flare</i> {{ award.award }} </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,72 +1,737 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
   
+  TO DO:
+    -
+-->
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>Thomas Kimbrell</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
     
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href='bootstrap/css/main.css' rel='stylesheet' type='text/css'>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src='bootstrap/js/bootstrap.min.js'></script>
-    <script src='bootstrap/js/vendor/angular.min.js'></script>
-    <script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.grey-blue.min.css">
     <script src="https://use.fontawesome.com/7eafcfa8e1.js"></script>
-  </head>
-  <body ng-app='mySite'>
     
-    <nav class="navbar navbar-default navbar-fixed-top myNav">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed myNavButton" data-toggle="collapse" data-target="#topnav" aria-expanded="false">
-            <i class='material-icons'>menu</i>
-          </button>
-          <a class="navbar-brand" href="#/">Thomas Kimbrell</a>
-        </div> <!-- end navbar header -->
-        <div class="collapse navbar-collapse pull-right" id="topnav" style="z-index: 100;">
-          <ul class="nav navbar-nav myNavLinks">
-            <li class='myNavLink' id='about'><a href='#/'>About</a></li>
-            <li class='myNavLink' id='experience'><a href='#/experience/'>Experience</a></li>
-            <li class='myNavLink' id='education'><a href='#/education/'>Education</a></li>
+    <style>
+      body{
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        background-color: #181818;
+        display: flex;
+      }
+      .drawer {
+        width:100vw;
+        margin-left: -100vw;
+        z-index: 10;
+        display:flex;
+        flex-flow:row nowrap;
+      }
+      .sidePanel {
+        min-width:280px;
+        max-width:280px;
+        height:100vh;
+        background-color:white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .sidePanelTop {
+        width:100%;
+        height:250px;
+        position:relative;
+      }
+      .sidePanelColor {
+        height:125px;
+        background-color:#2196F3;
+      }
+      .sidePanelImgWrapper {
+        width:100%;
+        height:250px;
+        position:absolute;
+        top:0;
+        left:0;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      #profilePic {
+        width:140px;
+        height:140px;
+        border:2px solid white;
+        border-radius:25%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .contactLinks{
+        width: 100%;
+        border-bottom: 1px solid #E9E9E9;
+      }
+      .contactLinks ul {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        list-style: none;
+        padding: 0px;
+        margin-top: 0px;
+      }
+      .contactLinks i {
+        color: #2196F3;
+      }
+      .sidePanelBottom {
+        width:100%;
+      }
+      .sidePanelBottom p {
+        margin:20px 10px 5px 10px;
+        text-align:justify;
+      }
+      #closeDrawer {
+        min-width:calc(100% - 280px);
+        height:100vh;
+      }
+      main {
+        order: 2;
+        width: 100vw;
+        min-height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      header {
+        order:1;
+        width:100%;
+        height:10vh;
+        background-color:#181818;
+        color:white;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:5px;
+      }
+      .content {
+        order:2;
+        width:100%;
+        height:80vh;
+        background-color:#181818;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-wrap:nowrap;
+      }
+      .contentWrapper{
+        height: 100%;
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        flex-flow:row nowrap;
+        overflow-y:hidden;
+        overflow-x:hidden;
+      }
+      .blankTopic {
+        min-width: 20% !important;
+        min-height: 100% !important;
+        background-color: #181818;
+      }
+      .topic {
+        height: 90%;
+        min-width: 90%;
+        max-width: 90%;
+        background-color: white;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      #about {
+        margin-left: 5%;
+        height:100%;
+      }
+      .topicTitle {
+        min-height:10%;
+        border-bottom:1px solid rgb(247,247,247);
+        display: flex;
+        align-items: center;
+      }
+      .topicTitle i {
+        margin:5px;
+      }
+      .topicTitle h5 {
+        margin: 0px;
+      }
+      .topicContent {
+        max-width:100%;
+        max-height:85%;
+        min-height: 85%;
+        overflow-x:hidden;
+        overflow-y:scroll;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-wrap:wrap;
+      }
+      .topicFeature{
+        background-size:cover;
+        background-position:center;
+        background-repeat:no-repeat;
+        width:100%;
+        height:200px;
+        display: flex;
+        align-items: flex-end;
+        align-content: flex-end;
+      }
+      .topicFeature h2{
+        margin: 5px;
+      }
+      .topicFooter {
+        border-top:1px solid rgb(247,247,247);
+        height: 5%;
+      }
+      .edCard{
+        width:100%;
+        margin-bottom:10px;
+        margin-top: 10px;
+      }
+      .edCardHeader {
+        display: flex;
+        align-items: center;
+      }
+      .edCardLogo {
+        background-color: white;
+        text-align:center;
+      }
+      .edCardLogo img {
+        width:100px;
+        height:auto;
+      }
+      .exCard{
+        display: flex;
+        flex-flow: column nowrap;
+        margin-bottom: 15px;
+      }
+      .exCardHeader {
+        display:flex;
+        flex-flow:column nowrap;
+      }
+      .exCardLogo {
+        background-color:black;
+        width:100%;
+        text-align:center;
+      }
+      .exCardLogo img {
+        width:200px;
+        height:auto;
+      }
+      .exCardTitle {
+        display: flex;flex-flow: column;
+        padding: 10px;
+        box-sizing: content-box;
+      }
+      .exCardTitle a {
+        text-decoration: none;
+      }
+      .exCardTitle p {
+        margin: 0px;
+      }
+      .exCardBody {
+        padding: 10px;
+      }
+      .topicFeature#uga {
+        background-image:url("img/ugaBanner.jpg");
+      }
+      .topicFeature#csub {
+        background-image:url("img/csub.jpg");
+      }
+      .portCard {
+        width:90%;
+        display:flex;
+        flex-flow:column nowrap;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .portCard a {
+        text-decoration: none;
+      }
+      .portCard img {
+        width:100%;
+        height:auto;
+      }
+      .portCard h6{
+        margin:0px;
+        height:50px;
+        width:100%;
+        display:flex;
+        justify-content: center;
+        align-items:center;
+      }
+      footer{
+        order:3;
+        width:100%;
+        height:10vh;
+        background-color:#181818;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+      }
+      .footerList {
+        padding: 0px;
+      }
+      .footerList li {
+        margin: 10px;
+        cursor: pointer;
+      }
+      .footerList li btn {
+        color:white;
+      }
+      @media all and (min-width: 700px) {
+        .edCard {
+          width: 50%;
+        }
+        .portCard {
+          width: 45%;
+        }
+      }
+      @media all and (min-width: 900px) {
+        .topic {
+          min-width: 60%;
+          max-width: 60%;
+        }
+        #about {
+          margin-left: 20%;
+        }
+        .edCard {
+          width: 50%;
+        }
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div class='drawer'>
+      <div class='sidePanel'>
+        <div class='sidePanelTop'>
+          <div class='sidePanelColor'></div>
+          <div class='sidePanelImgWrapper'>
+            <img src='img/headshot.jpg' id='profilePic'>
+          </div>
+        </div>
+        <div class='contactLinks'>
+          <ul class="drawerList">
+            <li><a href="tel:+1-678-936-0115"><i class='fa fa-mobile fa-2x'></i></a></li>
+            <li><a href='mailto:thms.kimbrell@gmail.com?Subject=Top%Secret' target='_blank'><i class='fa fa-envelope-o fa-2x'></i></a></li>
+            <li><a href='https://www.linkedin.com/in/thomas-kimbrell-77438358'><i class='fa fa-linkedin-square fa-2x'></i></a></li>
           </ul>
         </div>
+        <div class='sidePanelBottom'>
+          <p>I recently relocated to the Los Angeles area and am looking to continue my career here on the Golden Coast. Feel free to connect with me using the links above.</p>
+        </div>
       </div>
-      </nav>
-    
-    <div class='main'>
-      <div ng-view></div>
+      <div id='closeDrawer'></div>
     </div>
-    
-    <footer>
-      <div class='container-fluid' style="padding: 20px; text-align: center;">
-        <a href="tel:+1-678-936-0115"><i class='fa fa-mobile fa-2x'></i></a>
-        <a href='mailto:thms.kimbrell@gmail.com?Subject=Top%Secret' target='_blank'><i class='fa fa-envelope-o fa-2x'></i></a>
-        <a href='https://www.linkedin.com/in/thomas-kimbrell-77438358'><i class='fa fa-linkedin-square fa-2x'></i></a>
+      
+    <main>
+      <div class='trans hidden' style='position:fixed;width:100vw;height:100vh;background-color:black;opacity:0.5;z-index:5;'></div>
+      <header>
+        <i class='material-icons' style='font-size:xx-large;cursor:pointer;' id='btnDrawer'>menu</i>
+        <h4 style='margin-right:5px;'>Thomas Kimbrell</h4>
+      </header>
+      
+      <div class='content'>
+        <div class='contentWrapper'>
+          <!-- About Me -->
+          <div class='topic' id='about'>
+            <div class='topicTitle'>
+              <i class='fa fa-user fa-2x'></i><h5 style='display:inline;font-size:x-large;'>About</h5>
+            </div>
+            <div class='topicContent' style='justify-content:flex-start;'>
+              <h6 style='width: 100%; padding:10px;align-self:flex-start;'>Hi, I’m Thomas. Thanks for visiting and welcome to my website where you can learn a little about me.  Currently, I live in Los Angeles, having followed opportunity across the country three times now.</h6>
+              
+              <div class='topicFeature' style='height:300px;background-image:url("img/santaMonica.jpg");background-size:cover;background-position:center'>
+                <p style='width:100%;height:100%;display:flex;justify-content:flex-end;align-items:flex-end;align-content:flex-end;color:white;margin:0px 10px 0px 0px;'>Santa Monica, CA</p>
+              </div>
+              
+              <div class='bio' style='width:100%; padding:10px;'>
+                
+                <h6 style='width:100%;text-align:center;'>Professional</h6>
+                <p>I am objective and analytical with an advanced education in research and quantitative analysis. I am well practiced at developing, implementing, and improving business systems and processes to maximize efficiency. I am a proactive problem-solver and approach challenges strategically to arrive at the best possible solution.</p>
+                <p>I would describe myself as a curious lifelong-learner with an entrepreneurial mindset and an inclination for innovation. As a former collegiate wrestler and avid fan of the sport, I was frustrated by the lack of coverage available. So, in 2014, I enlisted the help of some friends and we developed the Centermat Wrestling app&mdash;the only app delivering scores, stats, standings, news, rankings, and much more for NCAA Divisions I, II, and III and NAIA wrestling.</p>
+                <p>While acting as Production Supervisor at Compound Clothing, I used my newfound coding skills to develop and scale systems to track inventory, manage data, automate workflows, plan the production calendar, pinpoint production costs, analyze various measures of efficiency, and maximize production capabilities.</p>
+                
+                <div class='topicFeature' style='height:300px;background-image:url("img/bridge - Edited (2).jpg");background-size:cover;background-position:center'>
+                  <p style='width:100%;height:100%;display:flex;justify-content:flex-end;align-items:flex-end;align-content:flex-end;color:white;margin:0px 10px 0px 0px;'>Lake Lanier, GA</p>
+                </div>
+                
+                <h6 style='width:100%;text-align:center;'>Personal</h6>
+                <p>Along with my identical twin brother and younger sister, I was born and raised on <a href='https://en.wikipedia.org/wiki/Lake_Lanier' target='_blank' style='text-decoration:none;'>Lake Lanier</a> in Dawsonville, Georgia&mdash;a small town in moonshine country nestled in the foothills of the Appalachian Mountains in North Georgia (which many claim to be the birthplace of <a href='https://en.wikipedia.org/wiki/Dawsonville,_Georgia#Auto_racing' target='_blank' style='text-decoration:none;'>NASCAR</a>).  I am an overeducated, laid-back gent who likes to work hard and have fun. Speaking of fun, I enjoy playing with my son, coaching wrestling, hiking, and spending time at the beach or on the lake.</p>
+              </div>
+            </div>
+            <div class='topicFooter'></div>
+          </div>
+          <!-- Education -->
+          <div class='topic' id='education'>
+            <div class='topicTitle'>
+              <i class='fa fa-graduation-cap fa-2x'></i><h5 style='display:inline;font-size:x-large;'>Education</h5>
+            </div>
+            <div class='topicContent'>
+              <!-- UGA -->
+              <div class='topicFeature' id='uga'></div>
+              <h6 style="width:100%;margin:20px;">University of Georgia <br> School of Public & International Affairs <br><b>M.A. Political Science and International Relations</b><br> Athens, Georgia | 2012</h6>
+              
+              <!-- UGA Alumni -->
+              <div class='edCard'>
+                <div class='edCardHeader'>
+                  <div class='edCardLogo' style='background-color:#21201E'>
+                    <img src='img/ugaAlumni2.jpg'>
+                  </div>
+                  <div class='exCardTitle'>
+                      <h6 style='margin:0px;'>Endowed Graduate Scholarship Recipient. Single scholar chosen from entire graduate school.</h6>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- CSUB -->
+              <div class='topicFeature' id='csub'></div>
+              <h6 style="width:100%;margin:20px;">California State University, Bakersfield <br><b>B.A. Political Science </b><br> Bakersfield, California | 2009</h6>
+              <div class='cardWrapper' style='width:100%;display:flex;flex-flow:row wrap;justify-content:flex-start;'>
+                <!-- Pac 12 SAOY -->
+                <div class='edCard'>
+                  <div class='edCardHeader'>
+                    <div class='edCardLogo' style='background-color:white'>
+                      <img src='img/pac12.png'>
+                    </div>
+                    <div class='exCardTitle'>
+                        <a href='http://www.gorunners.com/ViewArticle.dbml?SPSID=61408&SPID=6678&DB_LANG=C&DB_OEM_ID=13300&ATCLID=3758661' target='_blank'>
+                          <h6 style="margin:2px;">Pac-12 Conference Scholar-Athlete of the Year 2009</h6>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Pres Paper of Year -->
+                <div class='edCard'>
+                  <div class='edCardHeader'>
+                    <div class='edCardLogo' style='order:2;'>
+                      <img src='img/csub.png'>
+                    </div>
+                    <div class='exCardTitle'>
+                      <h6 style="margin:2px;">CSUB President's Award for Research Paper of the Year 2008</h6>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Thomas Watts -->
+                <div class='edCard'>
+                  <div class='edCardHeader'>
+                    <div class='edCardLogo'>
+                      <img src='img/csub.png'>
+                    </div>
+                    <div class='exCardTitle'>
+                      <h6 style="margin:2px;">Thomas Watts Peace Foundation Award for Outstanding Performance in Political Science and History 2009</h6>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- NWCA Academic AA -->
+                <div class='edCard'>
+                  <div class='edCardHeader'>
+                    <div class='edCardLogo' style='order:2;'>
+                      <img src='img/nwca.jpeg'>
+                    </div>
+                    <div class='exCardTitle'>
+                        <a href='http://www.gorunners.com/ViewArticle.dbml?SPSID=61408&SPID=6678&DB_LANG=C&DB_OEM_ID=13300&ATCLID=3746802' target='_blank'>
+                          <h6 style="margin:2px;">National Wrestling Coaches Association Academic All American 2008, 2009</h6>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Roandrunner of Year -->
+                <div class='edCard'>
+                  <div class='edCardHeader'>
+                    <div class='edCardLogo' style='background-color:white'>
+                      <img src='img/csub.jpeg'>
+                    </div>
+                    <div class='exCardTitle'>
+                        <a href='http://www.gorunners.com/ViewArticle.dbml?DB_OEM_ID=13300&ATCLID=3744432' target='_blank'>
+                          <h6 style="margin:2px;">CSUB Athletics Roadrunner of the Year 2009</h6>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Pac 12 Academic Team -->
+                <div class='edCard'>
+                  <div class='edCardHeader'>
+                    <div class='edCardLogo' style='order:2;'>
+                      <img src='img/pac12.png'>
+                    </div>
+                    <div class='exCardTitle'>
+                      <h6 style="margin:2px;">Pac 10 Conference All Academic Team 2006, 2007, 2008, 2009</h6>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- McNair -->
+                <div class='edCard'>
+                  <div class='edCardHeader'>
+                    <div class='edCardLogo'>
+                      <img src='img/csub.png'>
+                    </div>
+                    <div class='exCardTitle'>
+                      <h6 style="margin:2px;">Research Scholar, Ronald E. McNair Post Baccalaureate Achievement 2008-2009</h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='topicFooter'>
+              <!--<i class='material-icons fullscreen' style='font-size:xx-large;color:lightgrey;margin-right:20px;cursor:pointer;'>fullscreen</i>-->
+            </div>
+          </div>
+          <!-- Experience -->
+          <div class='topic' id='experience'>
+            <div class='topicTitle'>
+              <i class='fa fa-briefcase fa-2x'></i><h5 style='display:inline;font-size:x-large;'>Professional Experience</h5>
+            </div>
+            <div class='topicContent'>
+              <!-- <div class='topicFeature' id='uga'>
+                <h2 style='color:white;'>University of Georgia</h2>
+              </div> -->
+              <!-- CMP Clothing -->
+              <div class='exCard'>
+                <div class='exCardHeader'>
+                  <div class='exCardLogo'>
+                    <img src='img/cmp.jpg'>
+                  </div>
+                  <div class='exCardTitle'>
+                    <h4 style='margin:0px;'>Production Supervisor</h4>
+                    <a href='https://www.cmpclothing.com/' target='_blank'><h6 style='margin:0px;'>Compound Clothing</h6></a>
+                    <p>Nov 2013 - July 2016 | McDonough, GA</p>
+                  </div>
+                </div>
+                 <div class='quoteBlock' style='width:80%;align-self:center;'>
+                  <div class='quoteWrapper' style='width:100%;'>
+                    <i class='fa fa-quote-left fa-lg'></i><p style='display:inline;'>The growth of CMP in the last two years definitely wouldn't have happened without this guy at the helm in production. Thomas has figured out countless ways to aid in our success and innovate along the way.</p><i class='fa fa-quote-right fa-lg'></i>
+                      <p style='display:block;width:70%;margin-left:30%;'>&mdash; Cliff Fretwell, Owner, Compound Clothing</p>
+                  </div>
+                </div>
+                <div class='exCardBody'>
+                  <p>Upon my own initiative, created and implemented systems that streamline and automate workflow and data management using Google Apps Script and third-party software API. Manage and oversee the day-to-day production operations of one of the country’s fastest growing athletic teamwear providers, including: tracking and coordinating the production schedule and ensuring all jobs meet deadlines, maintaining inventory, quality assurance, delegating duties and responsibilities, and designing and implementing systems to achieve maximum efficiency of operations.</p>
+                </div>
+              </div>
+              <!-- Cetermat Wrestling -->
+              <div class='exCard'>
+                <div class='exCardHeader'>
+                  <div class='exCardLogo'>
+                    <img src='img/cmw.png'>
+                  </div>
+                  <div class='exCardTitle'>
+                    <h4 style='margin:0px;'>Founder, Owner, Operator</h4>
+                    <a href='http://www.centermatwrestling.com/' target='_blank'><h6 style='margin:0px;'>Centermat Wrestling</h6></a>
+                    <p>July 2014 - Present | Los Angeles, CA</p>
+                  </div>
+                </div>
+                <div class='exCardBody'>
+                  <p>Designed the only mobile application of its kind that provides schedules, scores, results, stats, rankings, and more for collegiate wrestling at the NCAA Divisions I, II, III, and NAIA levels. Built centermatwrestling.com. Test Centermat app, generate bug reports, describe app features and functions, draw wireframes, communicate findings with developer.</p>
+                </div>
+              </div>
+              <!-- Pyke & Associates -->
+              <div class='exCard'>
+                <div class='exCardHeader'>
+                  <div class='exCardLogo' style='background-color:#0E142E;width:100%;max-height: 200px;text-align:center;display: flex;min-height: 200px;align-items: center;justify-content: center;'>
+                    <img src='img/pyke.png' style='width:auto;height:100px;'>
+                  </div>
+                  <div class='exCardTitle'>
+                    <h4 style='margin:0px;'>Department Head</h4>
+                    <a href='http://www.cpyke.com/' target='_blank'><h6 style='margin:0px;'>Pyke & Associates</h6></a>
+                    <p>Sept 2012 - Oct 2013 | Stockbridge, GA</p>
+                  </div>
+                </div>
+                <div class='exCardBody'>
+                  <p>Spearheaded the Estate Administration department, ensured deadlines were met, maintained productivity, monitored workflow, prepared, edited, and proofed legal documents with the utmost attention to detail, communicated directly with clients regarding sensitive matters, facilitated communication between clients and the attorneys, and accommodated client requests.</p>
+                </div>
+              </div>
+              <!-- Halsey Law -->
+              <div class='exCard'>
+                <div class='exCardHeader'>
+                  <div class='exCardLogo' style='background-color:#FFFFFF;width:100%;text-align:center;background:radial-gradient(circle, white 50%, rgba(247,247,247,1));'>
+                    <img src='img/lawClip.jpeg' style='width:200px;height:auto;'>
+                  </div>
+                  <div class='exCardTitle'>
+                    <h4 style='margin:0px;'>Office Manager</h4>
+                    <a href='http://lawyeroceanside.com/' target='_blank'><h6 style='margin:0px;'>Law Offices of William C. Halsey</h6></a>
+                    <p>June 2009 - July 2010 | Oceanside, CA</p>
+                  </div>
+                </div>
+                <div class='exCardBody'>
+                  <p>Oversaw office operations, including organizing, delegating and monitoring paralegals’ and legal secretaries’ case work; ensured strict legal filing deadlines were met; communicated directly with clients and facilitated communication between clients, staff, and attorneys, executed budgeting, billing, and payroll.</p>
+                </div>
+              </div>
+            </div>
+            <div class='topicFooter'></div>
+          </div>
+          <!-- Portfolio -->
+          <div class='topic' id='portfolio'>
+            <div class='topicTitle'>
+              <i class='fa fa-line-chart fa-2x'></i><h5 style='display:inline;font-size:x-large;'>Portfolio</h5>
+            </div>
+            <div class='topicContent' style='justify-content:space-around;'>
+              <div class='portCard'>
+                  <a href='http://www.centermatwrestling.com/' target='_blank'>
+                  <img src='img/cmwScnSht.png'>
+                  <h6>CENTERMATWRESTLING.COM</h6>
+                </a>
+              </div>
+              
+              <div class='portCard'>
+                <a href='http://app.centermatwrestling.com/' target='_blank'>
+                  <img src='img/cmwAppScrSht.png'>
+                  <h6>CENTERMAT APP</h6>
+                </a>
+              </div>
+
+              
+            </div>
+            <div class='topicFooter'></div>
+          </div>
+          <!-- Resume -->
+          <div class='topic' id='resume' style='background-image:url("img/hotlanta.jpg ");background-size:cover;'>
+            <div class='topicTitle' style='border:none;color:white;'>
+              <i class='fa fa-file-text-o fa-2x' style='margin:5px;'></i><h5 style='display:inline;font-size:x-large;'>Resume</h5>
+            </div>
+              <div class='resume' style='width:100%; height:85%; display:flex;justify-content:center;align-items:center;'>
+                <!-- <a href='KimbrellThomasResume.pdf' target='_blank' style="color:#181818;width:100px;height: 50px;display: flex;justify-content: center;align-items: center;border: 3px solid #181818;border-radius: 5px;cursor:pointer;text-decoration:none;"><h6>RESUME<i class='fa fa-download fa-2x>' style='margin-left:5px;'></i></h6></a>-->
+                <a href='KimbrellThomasResume.pdf' download style="color:white;width:auto;height: auto;padding:20px;margin:10px 10px 10% 10px;border: 3px solid white;border-radius: 5px;cursor:pointer;text-decoration:none;"><i class='fa fa-download fa-5x'></i></a>
+                <a href='KimbrellThomasResume.pdf' target='_blank' style="color:white;width:auto;height: auto;padding:20px;margin:10px 10px 10% 10px;border: 3px solid white;border-radius: 5px;cursor:pointer;text-decoration:none;"><i class='fa fa-external-link fa-5x'></i></a>
+              </div>
+            <div class='topicFooter' style='color: white;border: none;text-align: right;'>
+              <p style='margin-right:10px;'>Atlanta, GA</p>
+            </div>
+          </div>
+          <!-- Blank -->
+          <div class='blankTopic'></div>
+        </div>
       </div>
-    </footer>
+      
+      <footer>
+        <ul class="footerList" style='display:flex;flex-direction:row;list-style:none;'>
+          <li><btn id='btnAbout'><i class='fa fa-user fa-2x'></i></btn></li>
+          <li><btn id='btnEducation'><i class='fa fa-graduation-cap fa-2x'></i></btn></li>
+          <li><btn id='btnExperience'><i class='fa fa-briefcase fa-2x'></i></btn></li>
+          <li><btn id='btnPortfolio'><i class='fa fa-line-chart fa-2x'></i></btn></li>
+          <li><btn id='btnResume'><i class='fa fa-file-text fa-2x'></i></btn></li>
+        </ul>
+      </footer>
+      
+    </main>
     
-    <!-- Modules  -->
-    <script type='text/javascript' src='bootstrap/js/app.js'></script>
-    
-    <!-- Controllers  -->
-    <script type='text/javascript' src='bootstrap/js/controllers/HomeController.js'></script>
-    <script type='text/javascript' src='bootstrap/js/controllers/ExperienceController.js'></script>
-    <script type='text/javascript' src='bootstrap/js/controllers/EducationController.js'></script>
-    
-    <!-- Services  -->
-    <script type='text/javascript' src='bootstrap/js/services/ExperienceService.js'></script>
-    <script type='text/javascript' src='bootstrap/js/services/EducationService.js'></script>
-    
-    <!-- my scripts -->
-    <script type='text/javascript' src='bootstrap/js/myfunctions.js'></script>
+
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      $('#btnDrawer').click(function() {
+        $('main').css("position","fixed");
+        $('.trans').removeClass('hidden');
+        $('.drawer').animate({marginLeft: 0}, 300);
+      });
+      
+      $('#closeDrawer').click(function() {
+        $('.drawer').animate({marginLeft: '-100vw'}, 300, function() {
+          $('main').css("position","static");
+        });
+        $('.trans').addClass('hidden');
+      });
+      
+      $("#btnAbout").click(function() {
+          $('.contentWrapper').animate({
+              scrollLeft: 0
+          }, 1000);
+          $('#about').animate({
+            height: '100%'}, 1000);
+          $('#about').siblings().animate({
+            height: '90%'}, 1000);
+      });
+      
+      $("#btnEducation").click(function() {
+          var x = $('.topic').width()+10;
+          $('.contentWrapper').animate({
+              scrollLeft: x
+          }, 1000);
+          $('#education').animate({
+            height: '100%'}, 1000);
+          $('#education').siblings().animate({
+            height: '90%'}, 1000);
+          console.log('x: ' + x);
+      });
+      
+      $("#btnExperience").click(function() {
+          var x2 = $('.topic').width()*2+20;
+          $('.contentWrapper').animate({
+              scrollLeft: x2
+          }, 1000);
+          $('#experience').animate({
+            height: '100%'}, 1000);
+          $('#experience').siblings().animate({
+            height: '90%'}, 1000);
+          console.log('x2: ' + x2);
+      });
+      
+      $("#btnPortfolio").click(function() {
+          var x3 = $('.topic').width()*3+30;
+          $('.contentWrapper').animate({
+              scrollLeft: x3
+          }, 1000);
+          $('#portfolio').animate({
+            height: '100%'}, 1000);
+          $('#portfolio').siblings().animate({
+            height: '90%'}, 1000);
+          console.log('x3: ' + x3);
+      });
+      
+      $("#btnResume").click(function() {
+          var x4 = $('.topic').width()*4+40;
+          $('.contentWrapper').animate({
+              scrollLeft: x4
+          }, 1000);
+          $('#resume').animate({
+            height: '100%'}, 1000);
+          $('#resume').siblings().animate({
+            height: '90%'}, 1000);
+          console.log('x4: ' + x4);
+      });
+    </script>
     
   </body>
-
 </html>

@@ -262,7 +262,7 @@ footer{
   color:white;
 }
 @media all and (min-width: 700px) {
-  body {
+  .wrapper {
     height: 100vh;
     position: fixed;
   }

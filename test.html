@@ -50,9 +50,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.grey-blue.min.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="jquery/jquery.mobile-1.4.5.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="jquery/jquery.mobile-1.4.5.min.js"></script>
+=======
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+>>>>>>> gh-pages
     <script src="https://use.fontawesome.com/7eafcfa8e1.js"></script>
     
     <style>
@@ -62,7 +68,10 @@
         height: 105vh;
         background-color: #181818;
         display: flex;
+<<<<<<< HEAD
         overflow: hidden;
+=======
+>>>>>>> gh-pages
       }
       .drawer {
         width:100vw;
@@ -319,9 +328,12 @@
       .footerList li btn {
         color:white;
       }
+<<<<<<< HEAD
       .swipeleft {
         background-color: black;
       }
+=======
+>>>>>>> gh-pages
       @media all and (min-width: 700px) {
         body {
           height: 100vh;
@@ -772,6 +784,7 @@
         });
         
         var swipex = $('.topic').width()+10;
+<<<<<<< HEAD
         //$('.contentWrapper').scrollLeft(swipex);
         console.log('swipex: ' + swipex);
         
@@ -785,8 +798,20 @@
           }
         });
         
+=======
+        console.log('swipex: ' + swipex)
+        $('html,body').on("swipe",function(){
+          $('.contentWrapper').animate({
+                scrollLeft: swipex
+            }, 300);
+        });
+>>>>>>> gh-pages
       });
     </script>
     
   </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> gh-pages

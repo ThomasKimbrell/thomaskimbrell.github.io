@@ -4,7 +4,6 @@
   height: 105vh;
   background-color: #181818;
   display: flex;
-  margin-top: 5vh;
 }
 .drawer {
   order: 1;

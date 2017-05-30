@@ -1,11 +1,6 @@
 $(document).ready(function () {
   
   var currPos = $('.contentWrapper').offset().left;
-  var swipex = $('.topic').width()+10;
-  var maxX = swipex*4;
-  console.log('currPos: ' + currPos );
-  console.log('swipex: ' + swipex);
-  console.log('maxX: ' + maxX);
   
   $('#btnDrawer').click(function() {
     $('main').css("position","fixed");
@@ -22,10 +17,11 @@ $(document).ready(function () {
   
   $('ul.footerList li').click(function() {
     var index = $(this).index();
+    var swipex = $('.topic').width()+10;
     var scrollLeft = swipex*index;
     currPos = scrollLeft;
-    console.log('btnIndex: ' + index);
-    console.log('scrollLeft: ' + scrollLeft);
+    //console.log('btnIndex: ' + index);
+    //console.log('scrollLeft: ' + scrollLeft);
     
     $('.contentWrapper').animate({
           scrollLeft: scrollLeft}, 500);
@@ -36,13 +32,15 @@ $(document).ready(function () {
   });
   
   $(function() {
+    var swipex = $('.topic').width()+10;
+    var maxX = swipex*4;
     $('.contentWrapper').on("swipeleft",function(){
       if(currPos >= 0 && currPos < maxX){
         
         currPos += swipex;
         var topicIndex = currPos/swipex;
-        console.log('newPos: ' + currPos);
-        console.log('topicIndex: ' + topicIndex);
+        //console.log('newPos: ' + currPos);
+        //console.log('topicIndex: ' + topicIndex);
         
         $('.contentWrapper').animate({
           scrollLeft: currPos}, 300);
@@ -58,8 +56,8 @@ $(document).ready(function () {
         
         currPos -= swipex;
         var topicIndex = currPos/swipex;
-        console.log('newPos: ' + currPos);
-        console.log('topicIndex: ' + topicIndex);
+        //console.log('newPos: ' + currPos);
+        //console.log('topicIndex: ' + topicIndex);
         
         $('.contentWrapper').animate({
           scrollLeft: currPos}, 300);

@@ -32,9 +32,11 @@ $(document).ready(function () {
   });
   
   $(function() {
-    var swipex = $('.topic').width()+10;
-    var maxX = swipex*4;
+    
+    
     $('.contentWrapper').on("swipeleft",function(){
+      var swipex = $('.topic').width()+10;
+      var maxX = swipex*4;
       if(currPos >= 0 && currPos < maxX){
         
         currPos += swipex;
@@ -52,6 +54,8 @@ $(document).ready(function () {
     });
 
     $('.contentWrapper').on("swiperight",function(){
+      var swipex = $('.topic').width()+10;
+      var maxX = swipex*4;
       if(currPos > 0 && currPos <= maxX){
         
         currPos -= swipex;

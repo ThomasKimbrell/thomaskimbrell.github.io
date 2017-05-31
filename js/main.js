@@ -1,6 +1,9 @@
 $(document).ready(function () {
   
   var currPos = $('.contentWrapper').offset().left;
+  var swipex = $('.topic').width()+10;
+  var maxX = swipex*4;
+  var index = 0;
   
   $('#btnDrawer').click(function() {
     $('main').css("position","fixed");
@@ -15,13 +18,20 @@ $(document).ready(function () {
     $('.trans').addClass('hidden');
   });
   
+  $(window).resize(function() {
+    swipex = $('.topic').width()+10;
+    maxX = swipex*4;
+    currPos = index*swipex;
+    $('.contentWrapper').animate({
+      scrollLeft: currPos}, 300);
+  });
+  
   $('ul.footerList li').click(function() {
-    var index = $(this).index();
-    var swipex = $('.topic').width()+10;
+    index = $(this).index();
     var scrollLeft = swipex*index;
     currPos = scrollLeft;
-    //console.log('btnIndex: ' + index);
-    //console.log('scrollLeft: ' + scrollLeft);
+    console.log('btnIndex: ' + index);
+    console.log('scrollLeft: ' + scrollLeft);
     
     $('.contentWrapper').animate({
           scrollLeft: scrollLeft}, 500);
@@ -32,42 +42,36 @@ $(document).ready(function () {
   });
   
   $(function() {
-    
-    
     $('.contentWrapper').on("swipeleft",function(){
-      var swipex = $('.topic').width()+10;
-      var maxX = swipex*4;
       if(currPos >= 0 && currPos < maxX){
         
         currPos += swipex;
-        var topicIndex = currPos/swipex;
-        //console.log('newPos: ' + currPos);
-        //console.log('topicIndex: ' + topicIndex);
+        index += 1;
+        console.log('newPos: ' + currPos);
+        console.log('topicIndex: ' + index);
         
         $('.contentWrapper').animate({
           scrollLeft: currPos}, 300);
-        $('div.topic:eq('+topicIndex+')').animate({
+        $('div.topic:eq('+index+')').animate({
           height: '100%'}, 300);
-        $('div.topic:eq('+topicIndex+')').siblings().animate({
+        $('div.topic:eq('+index+')').siblings().animate({
           height: '90%'}, 300);
       }
     });
 
     $('.contentWrapper').on("swiperight",function(){
-      var swipex = $('.topic').width()+10;
-      var maxX = swipex*4;
       if(currPos > 0 && currPos <= maxX){
         
         currPos -= swipex;
-        var topicIndex = currPos/swipex;
-        //console.log('newPos: ' + currPos);
-        //console.log('topicIndex: ' + topicIndex);
+        index -= 1;
+        console.log('newPos: ' + currPos);
+        console.log('topicIndex: ' + index);
         
         $('.contentWrapper').animate({
           scrollLeft: currPos}, 300);
-        $('div.topic:eq('+topicIndex+')').animate({
+        $('div.topic:eq('+index+')').animate({
           height: '100%'}, 300);
-        $('div.topic:eq('+topicIndex+')').siblings().animate({
+        $('div.topic:eq('+index+')').siblings().animate({
           height: '90%'}, 300);
       }
     });

@@ -5,6 +5,9 @@ $(document).ready(function () {
   var maxX = swipex*4;
   var index = 0;
   
+  console.log($('header > i').offset().top);
+  
+
   $('#btnDrawer').click(function() {
     $('main').css("position","fixed");
     $('.trans').removeClass('hidden');
@@ -23,15 +26,13 @@ $(document).ready(function () {
     maxX = swipex*4;
     currPos = index*swipex;
     $('.contentWrapper').animate({
-      scrollLeft: currPos}, 300);
+      scrollLeft: currPos}, 100);
   });
   
   $('ul.footerList li').click(function() {
     index = $(this).index();
     var scrollLeft = swipex*index;
     currPos = scrollLeft;
-    console.log('btnIndex: ' + index);
-    console.log('scrollLeft: ' + scrollLeft);
     
     $('.contentWrapper').animate({
           scrollLeft: scrollLeft}, 500);
@@ -39,6 +40,8 @@ $(document).ready(function () {
       height: '100%'}, 500);
     $('div.topic:eq('+index+')').siblings().animate({
       height: '90%'}, 500);
+    $(this).addClass('active');
+    $(this).siblings().removeClass('active');
   });
   
   $(function() {
@@ -47,8 +50,6 @@ $(document).ready(function () {
         
         currPos += swipex;
         index += 1;
-        console.log('newPos: ' + currPos);
-        console.log('topicIndex: ' + index);
         
         $('.contentWrapper').animate({
           scrollLeft: currPos}, 300);
@@ -56,6 +57,8 @@ $(document).ready(function () {
           height: '100%'}, 300);
         $('div.topic:eq('+index+')').siblings().animate({
           height: '90%'}, 300);
+        $('.footerList li:eq('+index+')').addClass('active');
+        $('.footerList li:eq('+index+')').siblings().removeClass('active');
       }
     });
 
@@ -64,8 +67,6 @@ $(document).ready(function () {
         
         currPos -= swipex;
         index -= 1;
-        console.log('newPos: ' + currPos);
-        console.log('topicIndex: ' + index);
         
         $('.contentWrapper').animate({
           scrollLeft: currPos}, 300);
@@ -73,6 +74,8 @@ $(document).ready(function () {
           height: '100%'}, 300);
         $('div.topic:eq('+index+')').siblings().animate({
           height: '90%'}, 300);
+        $('.footerList li:eq('+index+')').addClass('active');
+        $('.footerList li:eq('+index+')').siblings().removeClass('active');
       }
     });
   });

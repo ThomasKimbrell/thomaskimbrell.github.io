@@ -1,7 +1,7 @@
 .wrapper{
   position: static;
   width: 100vw;
-  height: 105vh;
+  height: 100vh;
   background-color: #181818;
   display: flex;
 }
@@ -16,7 +16,7 @@
 .sidePanel {
   min-width:280px;
   max-width:280px;
-  height:100vh;
+  height:100%;
   background-color:white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -87,7 +87,7 @@ header {
   color:white;
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  align-items:flex-end;
   padding:5px;
 }
 .content {
@@ -130,7 +130,7 @@ header {
   min-height:10%;
   border-bottom:1px solid rgb(247,247,247);
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 .topicTitle i {
   margin:5px;
@@ -249,17 +249,28 @@ footer{
   background-color:#181818;
   display:flex;
   justify-content:center;
-  align-items:center;
+  align-items:flex-end;
 }
 .footerList {
-  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  background-color: white;
+  background-color: rgba(255,255,255,0.95);
+  border-radius: 20px 20px 0 0;
+  margin: 0 0 -2px 0;
+  padding: 0;
 }
 .footerList li {
   margin: 10px;
   cursor: pointer;
+  color: #181818;
 }
-.footerList li btn {
-  color:white;
+.footerList li:hover {
+  color: #bba85b;
+}
+.footerList .active{
+  color: #bba85b;
 }
 @media all and (min-width: 700px) {
   .wrapper {

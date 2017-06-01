@@ -89,6 +89,7 @@ header {
   justify-content:space-between;
   align-items:center;
   padding:5px;
+  box-sizing: border-box;
 }
 .content {
   order:2;

@@ -4,9 +4,6 @@ $(document).ready(function () {
   var swipex = $('.topic').width()+10;
   var maxX = swipex*4;
   var index = 0;
-  
-  console.log($('header > i').offset().top);
-  
 
   $('#btnDrawer').click(function() {
     $('main').css("position","fixed");
@@ -29,54 +26,47 @@ $(document).ready(function () {
       scrollLeft: currPos}, 100);
   });
   
+  function active(index) {
+    $('div.topic:eq('+index+')').animate({
+      height: '100%'}, 300);
+    $('div.topic:eq('+index+')').siblings().animate({
+      height: '90%'}, 300);
+    $('.footerList li:eq('+index+')').addClass('active');
+    $('.footerList li:eq('+index+')').siblings().removeClass('active');
+  }
+  
+  function scroll(currPos) {
+    $('.contentWrapper').animate({
+          scrollLeft: currPos}, 300);
+  }
+  
   $('ul.footerList li').click(function() {
     index = $(this).index();
-    var scrollLeft = swipex*index;
-    currPos = scrollLeft;
-    
-    $('.contentWrapper').animate({
-          scrollLeft: scrollLeft}, 500);
-    $('div.topic:eq('+index+')').animate({
-      height: '100%'}, 500);
-    $('div.topic:eq('+index+')').siblings().animate({
-      height: '90%'}, 500);
-    $(this).addClass('active');
-    $(this).siblings().removeClass('active');
+    currPos = swipex*index;
+
+    scroll(currPos);
+    active(index);
   });
   
-  $(function() {
-    $('.contentWrapper').on("swipeleft",function(){
-      if(currPos >= 0 && currPos < maxX){
-        
-        currPos += swipex;
-        index += 1;
-        
-        $('.contentWrapper').animate({
-          scrollLeft: currPos}, 300);
-        $('div.topic:eq('+index+')').animate({
-          height: '100%'}, 300);
-        $('div.topic:eq('+index+')').siblings().animate({
-          height: '90%'}, 300);
-        $('.footerList li:eq('+index+')').addClass('active');
-        $('.footerList li:eq('+index+')').siblings().removeClass('active');
-      }
-    });
+  $('.contentWrapper').on("swipeleft",function(){
+    if(currPos >= 0 && currPos < maxX){
+      
+      currPos += swipex;
+      index += 1;
+      
+      scroll(currPos);
+      active(index);
+    }
+  });
 
-    $('.contentWrapper').on("swiperight",function(){
-      if(currPos > 0 && currPos <= maxX){
-        
-        currPos -= swipex;
-        index -= 1;
-        
-        $('.contentWrapper').animate({
-          scrollLeft: currPos}, 300);
-        $('div.topic:eq('+index+')').animate({
-          height: '100%'}, 300);
-        $('div.topic:eq('+index+')').siblings().animate({
-          height: '90%'}, 300);
-        $('.footerList li:eq('+index+')').addClass('active');
-        $('.footerList li:eq('+index+')').siblings().removeClass('active');
-      }
-    });
+  $('.contentWrapper').on("swiperight",function(){
+    if(currPos > 0 && currPos <= maxX){
+      
+      currPos -= swipex;
+      index -= 1;
+      
+      scroll(currPos);
+      active(index);
+    }
   });
 });
